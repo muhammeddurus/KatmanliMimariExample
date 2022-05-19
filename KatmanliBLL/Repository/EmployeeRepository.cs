@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace KatmanliBLL.Repository
 {
-    class EmployeeRepository : IRepository<Employee>
+    public class EmployeeRepository : IRepository<Employee>
     {
 
         NorthwindEntities db = new NorthwindEntities();

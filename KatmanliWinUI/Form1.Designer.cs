@@ -32,16 +32,16 @@ namespace KatmanliWinUI
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.buttonGuncelle = new System.Windows.Forms.Button();
+            this.buttonEkle = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.textBox3 = new System.Windows.Forms.TextBox();
-            this.buttonIdyeGore = new System.Windows.Forms.Button();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.buttonSil = new System.Windows.Forms.Button();
-            this.buttonEkle = new System.Windows.Forms.Button();
-            this.buttonGuncelle = new System.Windows.Forms.Button();
+            this.buttonIdyeGore = new System.Windows.Forms.Button();
+            this.textBox3 = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -66,6 +66,7 @@ namespace KatmanliWinUI
             this.button1.TabIndex = 1;
             this.button1.Text = "Getir";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // groupBox1
             // 
@@ -81,32 +82,23 @@ namespace KatmanliWinUI
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             // 
-            // groupBox2
+            // buttonGuncelle
             // 
-            this.groupBox2.Controls.Add(this.buttonSil);
-            this.groupBox2.Controls.Add(this.buttonIdyeGore);
-            this.groupBox2.Controls.Add(this.textBox3);
-            this.groupBox2.Location = new System.Drawing.Point(497, 436);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(477, 261);
-            this.groupBox2.TabIndex = 3;
-            this.groupBox2.TabStop = false;
+            this.buttonGuncelle.Location = new System.Drawing.Point(209, 195);
+            this.buttonGuncelle.Name = "buttonGuncelle";
+            this.buttonGuncelle.Size = new System.Drawing.Size(118, 40);
+            this.buttonGuncelle.TabIndex = 5;
+            this.buttonGuncelle.Text = "Güncelle";
+            this.buttonGuncelle.UseVisualStyleBackColor = true;
             // 
-            // label1
+            // buttonEkle
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(39, 57);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(46, 17);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "label1";
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(132, 54);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(195, 22);
-            this.textBox1.TabIndex = 1;
+            this.buttonEkle.Location = new System.Drawing.Point(42, 195);
+            this.buttonEkle.Name = "buttonEkle";
+            this.buttonEkle.Size = new System.Drawing.Size(118, 40);
+            this.buttonEkle.TabIndex = 4;
+            this.buttonEkle.Text = "Ekle";
+            this.buttonEkle.UseVisualStyleBackColor = true;
             // 
             // textBox2
             // 
@@ -124,21 +116,32 @@ namespace KatmanliWinUI
             this.label2.TabIndex = 2;
             this.label2.Text = "label2";
             // 
-            // textBox3
+            // textBox1
             // 
-            this.textBox3.Location = new System.Drawing.Point(25, 57);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(195, 22);
-            this.textBox3.TabIndex = 4;
+            this.textBox1.Location = new System.Drawing.Point(132, 54);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(195, 22);
+            this.textBox1.TabIndex = 1;
             // 
-            // buttonIdyeGore
+            // label1
             // 
-            this.buttonIdyeGore.Location = new System.Drawing.Point(249, 47);
-            this.buttonIdyeGore.Name = "buttonIdyeGore";
-            this.buttonIdyeGore.Size = new System.Drawing.Size(204, 43);
-            this.buttonIdyeGore.TabIndex = 5;
-            this.buttonIdyeGore.Text = "Id ye Göre Getir";
-            this.buttonIdyeGore.UseVisualStyleBackColor = true;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(39, 57);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(46, 17);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "label1";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.buttonSil);
+            this.groupBox2.Controls.Add(this.buttonIdyeGore);
+            this.groupBox2.Controls.Add(this.textBox3);
+            this.groupBox2.Location = new System.Drawing.Point(497, 436);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(477, 261);
+            this.groupBox2.TabIndex = 3;
+            this.groupBox2.TabStop = false;
             // 
             // buttonSil
             // 
@@ -149,23 +152,21 @@ namespace KatmanliWinUI
             this.buttonSil.Text = "SİL";
             this.buttonSil.UseVisualStyleBackColor = true;
             // 
-            // buttonEkle
+            // buttonIdyeGore
             // 
-            this.buttonEkle.Location = new System.Drawing.Point(42, 195);
-            this.buttonEkle.Name = "buttonEkle";
-            this.buttonEkle.Size = new System.Drawing.Size(118, 40);
-            this.buttonEkle.TabIndex = 4;
-            this.buttonEkle.Text = "Ekle";
-            this.buttonEkle.UseVisualStyleBackColor = true;
+            this.buttonIdyeGore.Location = new System.Drawing.Point(249, 47);
+            this.buttonIdyeGore.Name = "buttonIdyeGore";
+            this.buttonIdyeGore.Size = new System.Drawing.Size(204, 43);
+            this.buttonIdyeGore.TabIndex = 5;
+            this.buttonIdyeGore.Text = "Id ye Göre Getir";
+            this.buttonIdyeGore.UseVisualStyleBackColor = true;
             // 
-            // buttonGuncelle
+            // textBox3
             // 
-            this.buttonGuncelle.Location = new System.Drawing.Point(209, 195);
-            this.buttonGuncelle.Name = "buttonGuncelle";
-            this.buttonGuncelle.Size = new System.Drawing.Size(118, 40);
-            this.buttonGuncelle.TabIndex = 5;
-            this.buttonGuncelle.Text = "Güncelle";
-            this.buttonGuncelle.UseVisualStyleBackColor = true;
+            this.textBox3.Location = new System.Drawing.Point(25, 57);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(195, 22);
+            this.textBox3.TabIndex = 4;
             // 
             // Form1
             // 

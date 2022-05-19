@@ -7,6 +7,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using KatmanliBLL;
+using KatmanliBLL.Repository;
 
 namespace KatmanliWinUI
 {
@@ -15,6 +17,11 @@ namespace KatmanliWinUI
         public Form1()
         {
             InitializeComponent();
+        }
+        CategoryRepository cr = new CategoryRepository();
+        private void button1_Click(object sender, EventArgs e)
+        {
+            dataGridView1.DataSource= cr.GetAll();
         }
     }
 }
