@@ -42,6 +42,10 @@ namespace KatmanliWinUI
             this.buttonSil = new System.Windows.Forms.Button();
             this.buttonIdyeGore = new System.Windows.Forms.Button();
             this.textBox3 = new System.Windows.Forms.TextBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -70,6 +74,10 @@ namespace KatmanliWinUI
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.textBox4);
+            this.groupBox1.Controls.Add(this.label3);
+            this.groupBox1.Controls.Add(this.textBox5);
+            this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.buttonGuncelle);
             this.groupBox1.Controls.Add(this.buttonEkle);
             this.groupBox1.Controls.Add(this.textBox2);
@@ -168,6 +176,38 @@ namespace KatmanliWinUI
             this.textBox3.Size = new System.Drawing.Size(195, 22);
             this.textBox3.TabIndex = 4;
             // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(261, 211);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(195, 22);
+            this.textBox4.TabIndex = 9;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(168, 214);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(46, 17);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "label3";
+            // 
+            // textBox5
+            // 
+            this.textBox5.Location = new System.Drawing.Point(261, 155);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(195, 22);
+            this.textBox5.TabIndex = 7;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(168, 158);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(46, 17);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "label4";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -203,6 +243,10 @@ namespace KatmanliWinUI
         private System.Windows.Forms.Button buttonSil;
         private System.Windows.Forms.Button buttonIdyeGore;
         private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox textBox4;
+        private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.TextBox textBox5;
+        private System.Windows.Forms.Label label4;
     }
 }
 
