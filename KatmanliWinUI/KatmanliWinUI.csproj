@@ -95,9 +95,9 @@
       <Project>{b5867a03-5977-411a-8717-afd05294232e}</Project>
       <Name>KatmanliBLL</Name>
     </ProjectReference>
-    <ProjectReference Include="..\KatmanliDAL\KatmanliDAL.csproj">
-      <Project>{76e225ca-bc22-44b2-91da-5dbafb988467}</Project>
-      <Name>KatmanliDAL</Name>
+    <ProjectReference Include="..\KatmanliDTO\KatmanliDTO.csproj">
+      <Project>{fda8d59e-161c-4f0a-a593-630bb075db84}</Project>
+      <Name>KatmanliDTO</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

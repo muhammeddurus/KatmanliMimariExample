@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using KatmanliBLL;
 using KatmanliBLL.Repository;
-using KatmanliDAL;
+using KatmanliDTO;
 
 namespace KatmanliWinUI
 {
@@ -20,27 +20,21 @@ namespace KatmanliWinUI
             InitializeComponent();
         }
         CategoryRepository cr = new CategoryRepository();
-        OrderDetailRepository orDetail = new OrderDetailRepository();
+        
         private void button1_Click(object sender, EventArgs e)
         {
             dataGridView1.DataSource= cr.GetAll();
-            try
-            {
-                orDetail.Insert(new Order_Detail
-                {
-                    OrderID = 10324,
-                    ProductID = 2,
-                    Quantity = 10,
-                    UnitPrice = 1,
-                    Discount = 0
-                });
-            }
-            catch (Exception ex)
-            {
-
-                MessageBox.Show("Test"+ex.Message);
-            }
+           
           
+        }
+
+        private void buttonIdyeGore_Click(object sender, EventArgs e)
+        {
+            int id = Convert.ToInt32(textBox3.Text);
+            List<CategoryDto> category = new List<CategoryDto>();
+            category.Add(cr.GetById(id));
+            dataGridView1.DataSource = category;
+            
         }
     }
 }

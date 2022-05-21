@@ -1,4 +1,5 @@
 ﻿using KatmanliDAL;
+using KatmanliDTO.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,14 +18,31 @@ namespace KatmanliBLL.Repository
             db.SaveChanges();
         }
 
-        public List<Product> GetAll()
+        public List<ProductDto> GetAll()
         {
-            return db.Products.ToList();
+            try
+            {
+                List<ProductDto> productDtos = new List<ProductDto>();
+                List<Product> products = db.Products.ToList();
+                foreach (var item in products)
+                {
+                    var donenDto = ProductToProductDto(item);
+                    productDtos.Add(donenDto);
+                }
+
+                return productDtos;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw;
+            }
         }
 
-        public Product GetById(int itemId)
+        public ProductDto GetById(int itemId)
         {
-            return db.Products.Find(itemId);
+            var product = db.Products.Find(itemId);
+            return ProductToProductDto(product);
         }
 
         public void Insert(Product item)
@@ -37,6 +55,25 @@ namespace KatmanliBLL.Repository
         {
             db.Entry(db.Products.Find(item.ProductID)).CurrentValues.SetValues(item);
             db.SaveChanges();
+        }
+        private ProductDto ProductToProductDto(Product product)
+        {
+            return new ProductDto
+            {
+               ProductID= product.ProductID,
+               ProductName = product.ProductName,
+               UnitPrice = product.UnitPrice,
+               Category= product.Category,
+               QuantityPerUnit= product.QuantityPerUnit,
+               UnitsInStock= product.UnitsInStock,
+               Supplier= product.Supplier,
+               CategoryID= product.CategoryID,
+               Order_Details= product.Order_Details,
+               SupplierID = product.SupplierID
+
+
+
+            };
         }
     }
 }

@@ -32,6 +32,10 @@ namespace KatmanliWinUI
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.textBox4 = new System.Windows.Forms.TextBox();
+            this.label3 = new System.Windows.Forms.Label();
+            this.textBox5 = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
             this.buttonGuncelle = new System.Windows.Forms.Button();
             this.buttonEkle = new System.Windows.Forms.Button();
             this.textBox2 = new System.Windows.Forms.TextBox();
@@ -42,10 +46,6 @@ namespace KatmanliWinUI
             this.buttonSil = new System.Windows.Forms.Button();
             this.buttonIdyeGore = new System.Windows.Forms.Button();
             this.textBox3 = new System.Windows.Forms.TextBox();
-            this.textBox4 = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.textBox5 = new System.Windows.Forms.TextBox();
-            this.label4 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -89,6 +89,38 @@ namespace KatmanliWinUI
             this.groupBox1.Size = new System.Drawing.Size(477, 261);
             this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
+            // 
+            // textBox4
+            // 
+            this.textBox4.Location = new System.Drawing.Point(261, 211);
+            this.textBox4.Name = "textBox4";
+            this.textBox4.Size = new System.Drawing.Size(195, 22);
+            this.textBox4.TabIndex = 9;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(168, 214);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(46, 17);
+            this.label3.TabIndex = 8;
+            this.label3.Text = "label3";
+            // 
+            // textBox5
+            // 
+            this.textBox5.Location = new System.Drawing.Point(261, 155);
+            this.textBox5.Name = "textBox5";
+            this.textBox5.Size = new System.Drawing.Size(195, 22);
+            this.textBox5.TabIndex = 7;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(168, 158);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(46, 17);
+            this.label4.TabIndex = 6;
+            this.label4.Text = "label4";
             // 
             // buttonGuncelle
             // 
@@ -168,6 +200,7 @@ namespace KatmanliWinUI
             this.buttonIdyeGore.TabIndex = 5;
             this.buttonIdyeGore.Text = "Id ye Göre Getir";
             this.buttonIdyeGore.UseVisualStyleBackColor = true;
+            this.buttonIdyeGore.Click += new System.EventHandler(this.buttonIdyeGore_Click);
             // 
             // textBox3
             // 
@@ -175,38 +208,6 @@ namespace KatmanliWinUI
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(195, 22);
             this.textBox3.TabIndex = 4;
-            // 
-            // textBox4
-            // 
-            this.textBox4.Location = new System.Drawing.Point(261, 211);
-            this.textBox4.Name = "textBox4";
-            this.textBox4.Size = new System.Drawing.Size(195, 22);
-            this.textBox4.TabIndex = 9;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(168, 214);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(46, 17);
-            this.label3.TabIndex = 8;
-            this.label3.Text = "label3";
-            // 
-            // textBox5
-            // 
-            this.textBox5.Location = new System.Drawing.Point(261, 155);
-            this.textBox5.Name = "textBox5";
-            this.textBox5.Size = new System.Drawing.Size(195, 22);
-            this.textBox5.TabIndex = 7;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(168, 158);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(46, 17);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "label4";
             // 
             // Form1
             // 

@@ -1,16 +1,16 @@
-﻿using KatmanliDAL;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using KatmanliDAL;
+using KatmanliDTO;
 
 namespace KatmanliBLL.Repository
 {
     public class CategoryRepository : IRepository<Category>
     {
-
-        NorthwindEntities db = new NorthwindEntities();
+        NorthwindEntities db = ConnectionSettings.DbInstance;
         public void Delete(int itemId)
         {
             Category deleted = db.Categories.Find(itemId);
@@ -18,14 +18,33 @@ namespace KatmanliBLL.Repository
             db.SaveChanges();
         }
 
-        public List<Category> GetAll()
+        public List<CategoryDto> GetAll()
         {
-            return db.Categories.ToList();
+            try
+            {
+                List<CategoryDto> categoryDtos = new List<CategoryDto>();
+                List<Category> categories = db.Categories.ToList();
+                foreach (var item in categories)
+                {
+                    var donenDto = CategoryToCategoryDto(item);
+                    categoryDtos.Add(donenDto);
+                }
+
+                return categoryDtos;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw;
+            }
+
+
         }
 
-        public Category GetById(int itemId)
+        public CategoryDto GetById(int itemId)
         {
-            return db.Categories.Find(itemId);
+            var category = db.Categories.Find(itemId);
+            return CategoryToCategoryDto(category);
         }
 
         public void Insert(Category item)
@@ -36,8 +55,18 @@ namespace KatmanliBLL.Repository
 
         public void Update(Category item)
         {
-            db.Entry(db.Categories.Find(item.CategoryID)).CurrentValues.SetValues(item);
+            db.Entry(db.Customers.Find(item.CategoryID)).CurrentValues.SetValues(item);
             db.SaveChanges();
+        }
+        private CategoryDto CategoryToCategoryDto(Category category)
+        {
+            return new CategoryDto
+            {
+                CategoryID = category.CategoryID,
+                CategoryName = category.CategoryName,
+                Description = category.Description
+
+            };
         }
     }
 }

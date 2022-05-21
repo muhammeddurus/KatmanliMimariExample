@@ -1,4 +1,5 @@
 ﻿using KatmanliDAL;
+using KatmanliDTO.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,14 +19,32 @@ namespace KatmanliBLL.Repository
             db.SaveChanges();
         }
 
-        public List<Employee> GetAll()
+        public List<EmployeeDto> GetAll()
         {
-            return db.Employees.ToList();
+
+            try
+            {
+                List<EmployeeDto> employeeDtos = new List<EmployeeDto>();
+                List<Employee> employees = db.Employees.ToList();
+                foreach (var item in employees)
+                {
+                    var donenDto = EmployeeToEmployeeDto(item);
+                    employeeDtos.Add(donenDto);
+                }
+
+                return employeeDtos;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw;
+            }
         }
 
-        public Employee GetById(int itemId)
+        public EmployeeDto GetById(int itemId)
         {
-            return db.Employees.Find(itemId);
+            var employee = db.Employees.Find(itemId);
+            return EmployeeToEmployeeDto(employee);
         }
 
         public void Insert(Employee item)
@@ -38,6 +57,19 @@ namespace KatmanliBLL.Repository
         {
             db.Entry(db.Employees.Find(item.EmployeeID)).CurrentValues.SetValues(item);
             db.SaveChanges();
+        }
+        public EmployeeDto EmployeeToEmployeeDto(Employee employee)
+        {
+            return new EmployeeDto
+            {
+                EmployeeID = employee.EmployeeID,
+                FirstName = employee.FirstName,
+                LastName = employee.LastName,
+                Orders = employee.Orders,
+                Employee1 = employee.Employee1,
+                Employees1 = employee.Employees1
+
+            };
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using KatmanliDAL;
+using KatmanliDTO.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,14 +19,31 @@ namespace KatmanliBLL.Repository
             db.SaveChanges();
         }
 
-        public List<Shipper> GetAll()
+        public List<ShipperDto> GetAll()
         {
-            return db.Shippers.ToList();
+            try
+            {
+                List<ShipperDto> shipperDtos = new List<ShipperDto>();
+                List<Shipper> shippers = db.Shippers.ToList();
+                foreach (var item in shippers)
+                {
+                    var donenDto = ShipperToShipperDto(item);
+                    shipperDtos.Add(donenDto);
+                }
+
+                return shipperDtos;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+                throw;
+            }
         }
 
-        public Shipper GetById(int itemId)
+        public ShipperDto GetById(int itemId)
         {
-            return db.Shippers.Find(itemId);
+            var shipper = db.Shippers.Find(itemId);
+            return ShipperToShipperDto(shipper);
         }
 
         public void Insert(Shipper item)
@@ -38,6 +56,19 @@ namespace KatmanliBLL.Repository
         {
             db.Entry(db.Shippers.Find(item.ShipperID)).CurrentValues.SetValues(item);
             db.SaveChanges();
+        }
+        private ShipperDto ShipperToShipperDto(Shipper shipper)
+        {
+            return new ShipperDto
+            {
+               ShipperID=shipper.ShipperID,
+               CompanyName=shipper.CompanyName,
+               Phone=shipper.Phone,
+               Orders=shipper.Orders
+
+
+
+            };
         }
     }
 }

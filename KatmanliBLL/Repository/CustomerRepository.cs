@@ -1,4 +1,5 @@
 ﻿using KatmanliDAL;
+using KatmanliDTO.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,7 +11,7 @@ namespace KatmanliBLL.Repository
     public class CustomerRepository : IRepository<Customer>
     {
 
-        NorthwindEntities db = new NorthwindEntities();
+        NorthwindEntities db = ConnectionSettings.DbInstance;
         public void Delete(int itemId)
         {
             Customer deleted = db.Customers.Find(itemId);
@@ -18,14 +19,32 @@ namespace KatmanliBLL.Repository
             db.SaveChanges();
         }
 
-        public List<Customer> GetAll()
+        public List<CustomerDto> GetAll()
         {
-            return db.Customers.ToList();
+            try
+            {
+                List<CustomerDto> customerDtos = new List<CustomerDto>();
+                List<Customer> customers = db.Customers.ToList();
+                foreach (var item in customers)
+                {
+                    var donenDto = CustomerToCustomerDto(item);
+                    customerDtos.Add(donenDto);
+                }
+                return customerDtos;
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex.Message);
+                throw;
+            }
+           
         }
 
-        public Customer GetById(int itemId)
+        public CustomerDto GetById(int itemId)
         {
-            return db.Customers.Find(itemId);
+            var customer = db.Customers.Find(itemId);
+            return CustomerToCustomerDto(customer);
         }
 
         public void Insert(Customer item)
@@ -38,6 +57,21 @@ namespace KatmanliBLL.Repository
         {
             db.Entry(db.Customers.Find(item.CustomerID)).CurrentValues.SetValues(item);
             db.SaveChanges();
+        }
+        private CustomerDto CustomerToCustomerDto(Customer customer)
+        {
+            return new CustomerDto
+            {
+                CustomerID=customer.CustomerID,
+                CompanyName = customer.CompanyName,
+                City = customer.City,
+                Country=customer.Country,
+                ContactTitle=customer.ContactTitle,
+                Orders=customer.Orders,
+                Region=customer.Region,
+                ContactName=customer.ContactName
+
+            };
         }
     }
 }

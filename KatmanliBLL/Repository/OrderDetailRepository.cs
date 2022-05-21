@@ -1,4 +1,5 @@
 ﻿using KatmanliDAL;
+using KatmanliDTO.DTO;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,14 +18,31 @@ namespace KatmanliBLL.Repository
             db.SaveChanges();
         }
 
-        public List<Order_Detail> GetAll()
+        public List<OrderDetailDto> GetAll()
         {
-            return db.Order_Details.ToList();
+            try
+            {
+                List<OrderDetailDto> orderDetailDto = new List<OrderDetailDto>();
+                List<Order_Detail> order_Details = db.Order_Details.ToList();
+                foreach (var item in order_Details)
+                {
+                    var donenDto = OrderDetailToOrderDetailDto(item);
+                    orderDetailDto.Add(donenDto);
+                }
+                return orderDetailDto;
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine(ex.Message);
+                throw;
+            }
         }
 
-        public Order_Detail GetById(int itemId)
+        public OrderDetailDto GetById(int itemId)
         {
-            return db.Order_Details.Find(itemId);
+            var orderDetail = db.Order_Details.Find(itemId);
+            return OrderDetailToOrderDetailDto(orderDetail);
         }
 
         public void Insert(Order_Detail item)
@@ -38,6 +56,19 @@ namespace KatmanliBLL.Repository
             
             db.Entry(db.Order_Details.Find(item.ProductID)).CurrentValues.SetValues(item);
             db.SaveChanges();
+        }
+        public OrderDetailDto OrderDetailToOrderDetailDto(Order_Detail order_Detail)
+        {
+            return new OrderDetailDto
+            {
+                OrderID=order_Detail.OrderID,
+                ProductID = order_Detail.ProductID,
+                Product = order_Detail.Product,
+                Order=order_Detail.Order,
+                UnitPrice=order_Detail.UnitPrice,
+                Quantity=order_Detail.Quantity
+
+            };
         }
     }
 }

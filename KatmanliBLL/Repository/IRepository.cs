@@ -9,10 +9,10 @@ namespace KatmanliBLL.Repository
     public interface IRepository<T>
     {
 
-        List<T> GetAll();
+        
         void Insert(T item);
 
-        T GetById(int itemId);
+        
 
         void Update(T item);
         void Delete(int itemId);
